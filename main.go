@@ -1,7 +1,16 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"github.com/joho/godotenv"
+	"log"
+	"os"
+)
 
 func main() {
-	log.Default().Println("test log")
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("error while reading .env file", err)
+	}
+	token := os.Getenv("TOKEN")
+	fmt.Println(token)
 }
